@@ -8,23 +8,24 @@ from PyQt5.QtWebEngineWidgets import QWebEngineView
 
 class OpenPage(QWidget):
 
-    def __init__(self):
+    def __init__(self, htmlfile):
         super().__init__()
 
-        self.initUI()
+        self.initUI(htmlfile)
 
-    def initUI(self):
+    def initUI(self, htmlfile):
 
         #hbox = QHBoxLayout(self) # organizes widgets horizontally in a window
         vbox = QVBoxLayout(self) # organizes widgets vertically in a window
 
-        self.webEngineView = QWebEngineView()
-        self.loadPage()
+        self.webEngineView = QWebEngineView() # create the webview widget
+        self.loadPage(htmlfile)
 
         vbox.addWidget(self.webEngineView)
-        vbox.addWidget(QPushButton('1'))
-        vbox.addWidget(QPushButton('2'))
-        vbox.addWidget(QPushButton('3'))
+        vbox.addWidget(QPushButton('Model 1'))
+        # self.buttonObjectName.clicked.
+        vbox.addWidget(QPushButton('Model 2'))
+        vbox.addWidget(QPushButton('Model 3'))
 
         self.setLayout(vbox)
 
@@ -32,17 +33,17 @@ class OpenPage(QWidget):
         self.setWindowTitle('Simple application with Web View')
         self.show()
 
-    def loadPage(self):
+    def loadPage(self, htmlfile):
 
-        with open('webpage/test.html', 'r') as f:
+        with open(htmlfile, 'r') as f:
 
             html = f.read()
-            self.webEngineView.setHtml(html)
+            self.webEngineView.setHtml(html) # set html to webview widget
 
 def main():
 
     app = QApplication(sys.argv)
-    ex = OpenPage()
+    ex = OpenPage('webpage/test.html')
     sys.exit(app.exec_())
 
 
