@@ -16,7 +16,7 @@ app = QApplication(sys.argv)
 window = QWidget()
 window.setWindowTitle('PyQt5 App') # text in the top bar of the window
 window.setGeometry(100, 100, 280, 80) # position and size of the window: x, y, width, height
-window.move(60, 15)
+window.move(900, 0)
 helloMsg = QLabel('<h1>Hello World!</h1>', parent=window) # text in html
 helloMsg.move(60, 15) # place helloMsg at the coordinates (60, 15)
 
